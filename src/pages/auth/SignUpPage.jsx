@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import * as userService from '../../services/user'
+import * as userService from 'services/user'
 import AuthForm from './AuthForm'
 import FormContainer from './FormContainer'
 
