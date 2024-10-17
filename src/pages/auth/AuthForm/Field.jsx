@@ -2,7 +2,7 @@ const Field = (props) => {
   const { label, type, onChange, value } = props
   return (
     <div key={label} className="flex flex-col gap-1">
-      <label className="text-slate-600" htmlFor={label}>
+      <label className="text-slate-600 px-1" htmlFor={label}>
         {label}
       </label>
       <input
