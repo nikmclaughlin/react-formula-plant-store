@@ -10,13 +10,16 @@ const AuthForm = (props) => {
     })
     return initialState
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   return (
     <form
       className="bg-white border border-slate-300 rounded-lg flex flex-col gap-8 p-4 font-lato"
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault()
-        onSubmit(formValues)
+        setIsSubmitting(true)
+        await onSubmit(formValues)
+        setIsSubmitting(false)
       }}
     >
       <div className="flex flex-col gap-2">
@@ -35,8 +38,16 @@ const AuthForm = (props) => {
           />
         ))}
       </div>
-      <button className="bg-emerald-700 text-white rounded-lg w-full py-2">
+      <button
+        className="bg-emerald-700 text-white rounded-lg w-full py-2 relative disabled:opacity-60"
+        disabled={isSubmitting}
+      >
         {submitButtonLabel}
+        {isSubmitting && (
+          <div className="absolute top-0 right-6 flex items-center h-full">
+            <i className="fa-solid fa-circle-notch text-emerald-300 animate-spin" />
+          </div>
+        )}
       </button>
     </form>
   )

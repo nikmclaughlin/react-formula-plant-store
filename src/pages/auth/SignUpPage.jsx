@@ -44,7 +44,13 @@ const SignUpPage = () => {
             username: values.username,
             password: values.password,
           })
-          console.log(response.status)
+          if (response.status === 201) {
+            setErrorMessage('')
+            console.log('user created')
+          } else {
+            const data = await response.json()
+            setErrorMessage(data.error ?? 'error creating new account')
+          }
         }}
       />
       <div className="text-emerald-700 text-sm">
