@@ -3,7 +3,6 @@ import AuthForm from './AuthForm'
 const SignInPage = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-4 p-6">
-      <div className="font-playfair text-3xl">sign In!</div>
       <AuthForm
         fields={[
           {
@@ -15,6 +14,7 @@ const SignInPage = () => {
             type: 'password',
           },
         ]}
+        submitButtonLabel="sign in"
       />
     </div>
   )
