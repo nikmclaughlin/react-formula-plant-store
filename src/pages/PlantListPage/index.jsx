@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import * as plantService from 'services/plant'
+import LoadingSpinner from 'sharedComponents/LoadingSpinner'
 import NavBar from 'sharedComponents/NavBar'
 import RedirectToSignInIfSignedOut from 'sharedComponents/RedirectToSignInIfSignedOut'
 import PlantItem from './PlantItem'
@@ -27,9 +28,7 @@ const PlantListPage = () => {
       <NavBar />
       <div className="min-h-screen bg-emerald-50">
         {isLoading ? (
-          <div className="flex justify-center p-20">
-            <i className="fa-solid fa-spinner animate-spin text-3xl text-emerald-300" />
-          </div>
+          <LoadingSpinner />
         ) : (
           <div className="flex justify-center py-16">
             <div className="w-full max-w-5xl p-6 flex flex-col gap-6">
