@@ -1,6 +1,7 @@
-import SessionContext from 'contexts/sessionContext'
+import SessionContext from 'contexts/SessionContext'
 import { jwtDecode } from 'jwt-decode'
-import PlantListPage from 'pages/auth/PlantListPage'
+import PlantListPage from 'pages/PlantListPage'
+import PlantShowPage from 'pages/PlantShowPage'
 import SignInPage from 'pages/auth/SignInPage'
 import SignUpPage from 'pages/auth/SignUpPage'
 import { useState } from 'react'
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/plants" element={<PlantListPage />} />
+          <Route path="/plants/:plantId" element={<PlantShowPage />} />
         </Routes>
       </BrowserRouter>
     </SessionContext.Provider>
