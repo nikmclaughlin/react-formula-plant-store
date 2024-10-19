@@ -12,6 +12,7 @@ const App = () => {
   const [sessionToken, setSessionToken] = useState(() =>
     userService.getSessionTokenStorage()
   )
+
   return (
     <SessionContext.Provider
       value={{

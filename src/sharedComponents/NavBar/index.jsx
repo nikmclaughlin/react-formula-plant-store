@@ -1,10 +1,11 @@
-import SessionContext from 'contexts/sessionContext'
+import SessionContext from 'contexts/SessionContext'
 import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   const { username, signOut } = useContext(SessionContext)
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
+
   return (
     <div
       className="bg-emerald-700 flex items-center justify-center font-lato"
