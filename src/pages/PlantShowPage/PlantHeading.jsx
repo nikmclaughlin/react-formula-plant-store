@@ -1,5 +1,6 @@
 const PlantHeading = (props) => {
   const { plant } = props
+
   return (
     <>
       <div className="flex justify-between items-center text-emerald-700">

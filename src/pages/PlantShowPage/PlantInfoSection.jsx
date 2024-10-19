@@ -1,15 +1,19 @@
+import { useState } from 'react'
 import BenefitBox from './BenefitBox'
 import PlantHeading from './PlantHeading'
+import PlantPurchaseOptions from './PlantPurchaseOptions'
 
 const PlantInfoSection = (props) => {
   const { plant } = props
+  const [imageIndex, setImageIndex] = useState(0)
+
   return (
     <div className="flex md:flex-row flex-col gap-8">
       <div className="md:hidden">
         <PlantHeading plant={plant} />
       </div>
       <div className="flex-1 flex flex-col">
-        <img src={plant.images[0].src} className="rounded-lg" />
+        <img src={plant.images[imageIndex].src} className="rounded-lg" />
         <div className="flex gap-4 p-4">
           <BenefitBox
             icon="far fa-check-circle"
@@ -33,6 +37,11 @@ const PlantInfoSection = (props) => {
             {plant.description}
           </p>
         </div>
+        <PlantPurchaseOptions
+          plant={plant}
+          imageIndex={imageIndex}
+          setImageIndex={setImageIndex}
+        />
       </div>
     </div>
   )
