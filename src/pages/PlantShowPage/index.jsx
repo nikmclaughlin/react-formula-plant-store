@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import * as plantService from 'services/plant'
 import LoadingSpinner from 'sharedComponents/LoadingSpinner'
 import NavBar from 'sharedComponents/NavBar'
+import PlantInfoSection from './PlantInfoSection'
 
 const PlantShowPage = () => {
   const [plant, setPlant] = useState()
@@ -21,23 +22,12 @@ const PlantShowPage = () => {
   return (
     <>
       <NavBar />
-      <div className="flex justify-center bg-emerald-50 min-h-screen">
+      <div className="flex justify-center bg-emerald-50 min-h-screen font-lato">
         <div className="w-full max-w-5xl px-6 py-20">
           {isLoading ? (
             <LoadingSpinner />
           ) : (
-            <>
-              {plant && (
-                <div>
-                  <img src={plant.images[0].src} className="w-96" />
-                  <div>{plant.name}</div>
-                  <div>{plant.price}</div>
-                  <div>{plant.botanical_name}</div>
-                  <div>{plant.care_instructions}</div>
-                  <div>{plant.description}</div>
-                </div>
-              )}
-            </>
+            <>{plant && <PlantInfoSection plant={plant} />}</>
           )}
         </div>
       </div>
