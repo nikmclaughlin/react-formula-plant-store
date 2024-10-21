@@ -56,12 +56,11 @@ const PlantPurchaseOptions = (props) => {
           className="bg-emerald-700 px-4 py-1 flex-1 rounded-full text-xl text-emerald-50 flex gap-4 items-center justify-center hover:bg-emerald-800"
           onClick={async () => {
             setIsAddingToCart(true)
-            const response = await cartService.addPlantToCart({
+            await cartService.addPlantToCart({
               plantId: plant.id,
               quantity,
               potColor: plant.images[imageIndex].pot_color,
             })
-            console.log(response.status)
             setIsAddingToCart(false)
           }}
         >
