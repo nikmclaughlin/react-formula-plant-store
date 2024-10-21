@@ -1,5 +1,5 @@
 import SessionContext from 'contexts/SessionContext'
-import { useContext, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import { RemoveScroll } from 'react-remove-scroll'
 import * as cartServices from 'services/cart'
 import LoadingSpinner from 'sharedComponents/LoadingSpinner'
@@ -11,14 +11,17 @@ const CartModal = (props) => {
   const [isLoading, setIsLoading] = useState(true)
   const [cartItems, setCartItems] = useState([])
 
-  useEffect(() => {
-    ;(async () => {
-      setIsLoading(true)
-      const response = await cartServices.getSessionCart()
-      setCartItems(await response.json())
-      setIsLoading(false)
-    })()
+  const fetchCart = useCallback(async () => {
+    setIsLoading(true)
+    const response = await cartServices.getSessionCart()
+    setCartItems(await response.json())
+    setIsLoading(false)
   }, [])
+
+  useEffect(() => {
+    fetchCart()
+  }, [fetchCart])
+
   return (
     <RemoveScroll>
       <div className="fixed top-0 right-0 w-full h-full bg-black/30 backdrop-blur-sm flex justify-end font-lato">
@@ -35,9 +38,15 @@ const CartModal = (props) => {
           {isLoading ? (
             <LoadingSpinner />
           ) : (
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 px-6 divide-y divide-slate-300">
               {cartItems.map((cartItem) => {
-                return <CartItem key={cartItem.id} item={cartItem} />
+                return (
+                  <CartItem
+                    key={cartItem.id}
+                    item={cartItem}
+                    fetchCart={fetchCart}
+                  />
+                )
               })}
             </div>
           )}
