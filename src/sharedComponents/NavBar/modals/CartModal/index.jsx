@@ -1,4 +1,5 @@
 import SessionContext from 'contexts/SessionContext'
+import { motion } from 'framer-motion'
 import { useCallback, useContext, useEffect, useState } from 'react'
 import * as cartServices from 'services/cart'
 import LoadingSpinner from 'sharedComponents/LoadingSpinner'
@@ -28,7 +29,12 @@ const CartModal = () => {
   })
 
   return (
-    <div className="bg-emerald-50 h-screen w-full max-w-lg flex flex-col">
+    <motion.div
+      className="bg-emerald-50 h-screen w-full max-w-lg flex flex-col"
+      initial={{ opacity: 0, translateX: '80%' }}
+      animate={{ opacity: 1, translateX: 0 }}
+      transition={{ duration: 0.25 }}
+    >
       <div className="bg-emerald-700 font-playfair text-white text-3xl text-center py-6 shadow-md flex items-center justify-center">
         <div>{username}&apos;s Cart</div>
       </div>
@@ -69,7 +75,7 @@ const CartModal = () => {
           </div>
         </>
       )}
-    </div>
+    </motion.div>
   )
 }
 
