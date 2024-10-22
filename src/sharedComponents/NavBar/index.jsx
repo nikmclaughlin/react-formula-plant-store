@@ -2,11 +2,14 @@ import SessionContext from 'contexts/SessionContext'
 import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CartModal from './modals/CartModal'
+import MobileMenuModal from './modals/MobileMenuModal'
+import ModalWrapper from './modals/ModalWrapper'
 
 const NavBar = () => {
   const { username, signOut } = useContext(SessionContext)
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
   const [isCartMenuOpen, setIsCartMenuOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
     <>
@@ -26,7 +29,7 @@ const NavBar = () => {
               </div>
             </div>
           </Link>
-          <div className="relative flex-1 flex justify-end gap-10">
+          <div className="hidden sm:flex relative flex-1 justify-end gap-10">
             <button
               className="flex items-center gap-2 text-emerald-100"
               onClick={() => setIsUserMenuOpen(true)}
@@ -53,9 +56,28 @@ const NavBar = () => {
               cart
             </button>
           </div>
+          <button onClick={() => setIsMobileMenuOpen(true)}>
+            <i className="block sm:hidden fa-solid fa-bars text-emerald-300 text-3xl" />
+          </button>
         </div>
       </div>
-      {isCartMenuOpen && <CartModal setIsCartMenuOpen={setIsCartMenuOpen} />}
+      <ModalWrapper
+        isOpen={isCartMenuOpen}
+        onCloseClick={() => setIsCartMenuOpen(false)}
+      >
+        <CartModal />
+      </ModalWrapper>
+      <ModalWrapper
+        isOpen={isMobileMenuOpen}
+        onCloseClick={() => setIsMobileMenuOpen(false)}
+      >
+        <MobileMenuModal
+          onCartOpenClick={() => {
+            setIsCartMenuOpen(true)
+            setIsMobileMenuOpen(false)
+          }}
+        />
+      </ModalWrapper>
     </>
   )
 }
