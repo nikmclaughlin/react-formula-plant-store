@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 import BenefitBox from './BenefitBox'
 import PlantHeading from './PlantHeading'
 import PlantPurchaseOptions from './PlantPurchaseOptions'
@@ -13,7 +15,9 @@ const PlantInfoSection = (props) => {
         <PlantHeading plant={plant} />
       </div>
       <div className="flex-1 flex flex-col">
-        <img src={plant.images[imageIndex].src} className="rounded-lg" />
+        <Zoom classDialog="emeraldZoom">
+          <img src={plant.images[imageIndex].src} className="rounded-lg" />
+        </Zoom>
         <div className="flex gap-4 p-4">
           <BenefitBox
             icon="far fa-check-circle"
