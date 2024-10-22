@@ -1,8 +1,22 @@
-# React + Vite
+# Marilyn's Plant Store 🪴
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An eCommerce demo store created as the [React Formula](https://react-formula.com/) capstone project.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- Vite
+- Tailwind
+- React Router
+- clsx
+- Framer Motion
+
+## Further Optimizations
+
+This app was built as part of a course curriculum, but if I was going to optimize it more I'd like to
+
+- Introduce caching for cart & shop item API requests
+- Add a true home page
+- Add other Auth options (social, magic link)
+- Add a checkout page with test payment integration
+- Add controls for sort order on plant list page
