@@ -7,7 +7,7 @@ import SignUpPage from 'pages/auth/SignUpPage'
 import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import * as userService from 'services/user'
-import ScrollToTop from 'sharedComponents/scrollToTop'
+import ScrollToTop from 'sharedComponents/ScrollToTop'
 
 const App = () => {
   const [sessionToken, setSessionToken] = useState(() =>
