@@ -1,4 +1,4 @@
-import SessionContext from 'contexts/sessionContext'
+import SessionContext from 'contexts/SessionContext'
 import { useContext, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import * as userService from 'services/user'

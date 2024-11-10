@@ -1,4 +1,4 @@
-import SessionContext from 'contexts/sessionContext'
+import SessionContext from 'contexts/SessionContext'
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
